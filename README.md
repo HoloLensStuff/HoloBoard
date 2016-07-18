@@ -28,13 +28,12 @@ A Windows 10 PC configured with the correct [tools installed](https://developer.
 | Visual Studio 2015 Update 3               | If you choose a custom install, ensure that Tools (1.4) and Windows 10 SDK (10.0.10586) is enabled under Universal Windows App Development Tools node. All editions of Visual Studio 2015 Update 3 are supported, including Community.                     |
 | HoloLens Emulator (build 10.0.14342.1018)	| The emulator allows you to run apps on Windows Holographic in a virtual machine without a HoloLens. **Your system must support Hyper-V for the Emulator installation to succeed. Please reference the System Requirements section below for the details.** |
 | Unity HoloLens Technical Preview          | HoloLens support in Unity is available through a custom version of the Unity Editor and Runtime which is now available to download for free on the [Unity website](http://unity3d.com/partners/windows/hololens).	                                         |
-|||
+
 
 | Unity HoloLens install guide |
 | - | 
 | First, install the [64-bit (Win)](http://beta.unity3d.com/download/f990cb18ca69/UnitySetup64.exe?_ga=1.114506439.1179177976.1467960147) or [32-bit (Win)](http://beta.unity3d.com/download/f990cb18ca69/UnitySetup32.exe?_ga=1.114506439.1179177976.1467960147) Editor Installer. |
 | Next install the [UWP Runtime](http://beta.unity3d.com/download/f990cb18ca69/UnitySetup-Metro-Support-for-Editor-5.4.0b24-HTP.exe?_ga=1.114506439.1179177976.1467960147). |
-||
 
 
 # Getting started
