@@ -40,6 +40,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
+        name: _DetailTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
         name: _EmissionMap
       second:
         m_Texture: {fileID: 0}
@@ -69,10 +75,19 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - first:
+        name: _SpecGlossMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - first:
         name: _BumpScale
       second: 1
+    - first:
+        name: _Cull
+      second: 2
     - first:
         name: _Cutoff
       second: 0.5
@@ -101,8 +116,14 @@ Material:
         name: _OcclusionStrength
       second: 1
     - first:
+        name: _Outline
+      second: 0.01
+    - first:
         name: _Parallax
       second: 0.02
+    - first:
+        name: _Shininess
+      second: 0.1
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -116,6 +137,9 @@ Material:
         name: _UVSec
       second: 0
     - first:
+        name: _WindQuality
+      second: 0
+    - first:
         name: _ZWrite
       second: 1
     m_Colors:
@@ -125,3 +149,12 @@ Material:
     - first:
         name: _EmissionColor
       second: {r: 0.99066937, g: 1, b: 0.32352942, a: 1}
+    - first:
+        name: _HueVariation
+      second: {r: 1, g: 0.5, b: 0, a: 0.1}
+    - first:
+        name: _OutlineColor
+      second: {r: 0, g: 1, b: 0, a: 1}
+    - first:
+        name: _SpecColor
+      second: {r: 0.2, g: 0.2, b: 0.2, a: 1}
