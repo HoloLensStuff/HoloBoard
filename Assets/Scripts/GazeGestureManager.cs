@@ -23,7 +23,7 @@ public class GazeGestureManager : MonoBehaviour
             if (focusedStickyNote != null)
             {
                 focusedStickyNote.Duplicate();
-                focusedStickyNote.PlaceParent();
+                focusedStickyNote.PlaceOnBoard();
             }
         };
         recognizer.StartCapturingGestures();

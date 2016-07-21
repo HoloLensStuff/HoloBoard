@@ -1,24 +1,27 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(DuplicateManager))]
-[RequireComponent(typeof(TapToPlaceParent))]
+[RequireComponent(typeof(TapToPlaceOnBoard))]
 public class StickyNote : MonoBehaviour
 {
     DuplicateManager _duplicateManager;
-    TapToPlaceParent _tapToPlaceParent;
+    TapToPlaceOnBoard _tapToPlaceOnBoard;
 
     void Start()
     {
         _duplicateManager = GetComponent<DuplicateManager>();
-        _tapToPlaceParent = GetComponent<TapToPlaceParent>();
+        _tapToPlaceOnBoard = GetComponent<TapToPlaceOnBoard>();
     }
 
     public void Duplicate()
     {
-        _duplicateManager.Duplicate();
+        if (_tapToPlaceOnBoard.IsPlacingMode() == false)
+        {
+            _duplicateManager.Duplicate();
+        }
     }
-    public void PlaceParent()
+    public void PlaceOnBoard()
     {
-        _tapToPlaceParent.OnSelect();
+        _tapToPlaceOnBoard.OnSelect();
     }
 }

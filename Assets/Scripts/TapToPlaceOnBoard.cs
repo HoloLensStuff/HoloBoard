@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class TapToPlaceParent : MonoBehaviour
+public class TapToPlaceOnBoard : MonoBehaviour
 {
     bool placing = false;
 
@@ -14,6 +14,8 @@ public class TapToPlaceParent : MonoBehaviour
         standardShader = Shader.Find("Standard");
         customStickyNoteSelectedShader = Shader.Find("Custom/StickyNoteSelected");
     }
+
+    public bool IsPlacingMode() { return placing; }
 
     // Called by GazeGestureManager when the user performs a Select gesture
     public void OnSelect()
@@ -32,7 +34,7 @@ public class TapToPlaceParent : MonoBehaviour
 
             var headPosition = Camera.main.transform.position;
             var gazeDirection = Camera.main.transform.forward;
-            
+
             RaycastHit hitInfo;
             if (Physics.Raycast(headPosition, gazeDirection, out hitInfo,
                 30.0f, whiteBoardLayer))
