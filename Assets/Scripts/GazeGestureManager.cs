@@ -19,10 +19,11 @@ public class GazeGestureManager : MonoBehaviour
         recognizer = new GestureRecognizer();
         recognizer.TappedEvent += (source, tapCount, ray) =>
         {
-            // Send an OnSelect message to the focused object and its ancestors.
-            if (FocusedObject != null)
+            StickyNote focusedStickyNote = FocusedObject.GetComponent<StickyNote>();
+            if (focusedStickyNote != null)
             {
-                FocusedObject.SendMessageUpwards("OnSelect");
+                focusedStickyNote.Duplicate();
+                focusedStickyNote.PlaceOnBoard();
             }
         };
         recognizer.StartCapturingGestures();
