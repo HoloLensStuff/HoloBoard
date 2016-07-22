@@ -2,17 +2,15 @@
 
 public class TapToPlaceOnBoard : MonoBehaviour
 {
-    bool placing = false;
+    public Material defaultMaterial;
+    public Material activeObjectMaterial;
 
     Renderer currentRenderer;
-    Shader standardShader;
-    Shader customStickyNoteSelectedShader;
+    bool placing = false;
 
     void Start()
     {
         currentRenderer = GetComponent<Renderer>();
-        standardShader = Shader.Find("Standard");
-        customStickyNoteSelectedShader = Shader.Find("Custom/StickyNoteSelected");
     }
 
     public bool IsPlacingMode() { return placing; }
@@ -22,7 +20,7 @@ public class TapToPlaceOnBoard : MonoBehaviour
     {
         placing = !placing;
 
-        currentRenderer.material.shader = placing ? customStickyNoteSelectedShader : standardShader;
+        currentRenderer.material = placing ? activeObjectMaterial : defaultMaterial;
     }
 
     // Update is called once per frame

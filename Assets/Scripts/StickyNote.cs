@@ -15,7 +15,7 @@ public class StickyNote : MonoBehaviour
 
     public void Duplicate()
     {
-        if (_tapToPlaceOnBoard.IsPlacingMode() == false)
+        if (CanDuplicate())
         {
             _duplicateManager.Duplicate();
         }
@@ -23,5 +23,20 @@ public class StickyNote : MonoBehaviour
     public void PlaceOnBoard()
     {
         _tapToPlaceOnBoard.OnSelect();
+    }
+
+    private bool CanDuplicate()
+    {
+        if (_tapToPlaceOnBoard.IsPlacingMode() 
+            || WasMoved())
+        {
+            return false;
+        }
+        
+        return true;
+    }
+    private bool WasMoved()
+    {
+        return gameObject.transform.localPosition.Equals(new Vector3(0, 0, 0)) == false;
     }
 }
