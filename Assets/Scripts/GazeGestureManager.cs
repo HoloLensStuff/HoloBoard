@@ -22,8 +22,15 @@ public class GazeGestureManager : MonoBehaviour
             StickyNote focusedStickyNote = FocusedObject.GetComponent<StickyNote>();
             if (focusedStickyNote != null)
             {
+                focusedStickyNote.PerformTagAlong();
                 focusedStickyNote.Duplicate();
                 focusedStickyNote.PlaceOnBoard();
+            }
+
+            DismissOnSelect dismissableObject = FocusedObject.GetComponent<DismissOnSelect>();
+            if (dismissableObject != null)
+            {
+                dismissableObject.OnSelect();
             }
         };
         recognizer.StartCapturingGestures();

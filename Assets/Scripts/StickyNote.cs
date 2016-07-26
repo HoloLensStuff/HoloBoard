@@ -2,15 +2,18 @@
 
 [RequireComponent(typeof(DuplicateManager))]
 [RequireComponent(typeof(TapToPlaceOnBoard))]
+[RequireComponent(typeof(InteractibleAction))]
 public class StickyNote : MonoBehaviour
 {
     DuplicateManager _duplicateManager;
     TapToPlaceOnBoard _tapToPlaceOnBoard;
+    InteractibleAction _interactibleAction;
 
     void Start()
     {
         _duplicateManager = GetComponent<DuplicateManager>();
         _tapToPlaceOnBoard = GetComponent<TapToPlaceOnBoard>();
+        _interactibleAction = GetComponent<InteractibleAction>();
     }
 
     public void Duplicate()
@@ -24,15 +27,19 @@ public class StickyNote : MonoBehaviour
     {
         _tapToPlaceOnBoard.OnSelect();
     }
+    public void PerformTagAlong()
+    {
+        _interactibleAction.PerformTagAlong();
+    }
 
     private bool CanDuplicate()
     {
-        if (_tapToPlaceOnBoard.IsPlacingMode() 
+        if (_tapToPlaceOnBoard.IsPlacingMode()
             || WasMoved())
         {
             return false;
         }
-        
+
         return true;
     }
     private bool WasMoved()
