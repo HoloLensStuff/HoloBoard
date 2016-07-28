@@ -3,7 +3,6 @@ using UnityEngine.VR.WSA.Input;
 
 public class GazeGestureBlueNoteManager : MonoBehaviour {
 
-
     public static GazeGestureBlueNoteManager Instance { get; private set; }
 
     // Represents the hologram that is currently being gazed at.
@@ -15,7 +14,7 @@ public class GazeGestureBlueNoteManager : MonoBehaviour {
     void Start()
     {
         Instance = this;
-
+        
         // Set up a GestureRecognizer to detect Select gestures.
         recognizer = new GestureRecognizer();
         recognizer.TappedEvent += (source, tapCount, ray) =>

@@ -3,7 +3,6 @@ using UnityEngine.VR.WSA.Input;
 
 public class GazeGestureGreenNoteManager : MonoBehaviour {
 
-
     public static GazeGestureGreenNoteManager Instance { get; private set; }
 
     // Represents the hologram that is currently being gazed at.
