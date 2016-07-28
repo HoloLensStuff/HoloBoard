@@ -1,0 +1,105 @@
+fileFormatVersion: 2
+guid: 78d2799404ce0d84dbd7c3cdffe5b0d4
+timeCreated: 1469541725
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: BezierCircle
+    100002: Circle
+    100004: Circle_001
+    100006: Circle_MeshPart0
+    100008: Circle_MeshPart1
+    100010: Circle_MeshPart2
+    100012: Circle_MeshPart3
+    100014: //RootNode
+    400000: BezierCircle
+    400002: Circle
+    400004: Circle_001
+    400006: Circle_MeshPart0
+    400008: Circle_MeshPart1
+    400010: Circle_MeshPart2
+    400012: Circle_MeshPart3
+    400014: //RootNode
+    2300000: BezierCircle
+    2300002: Circle_001
+    2300004: Circle_MeshPart0
+    2300006: Circle_MeshPart1
+    2300008: Circle_MeshPart2
+    2300010: Circle_MeshPart3
+    3300000: BezierCircle
+    3300002: Circle_001
+    3300004: Circle_MeshPart0
+    3300006: Circle_MeshPart1
+    3300008: Circle_MeshPart2
+    3300010: Circle_MeshPart3
+    4300000: BezierCircle
+    4300002: Circle_MeshPart0
+    4300004: Circle_MeshPart1
+    4300006: Circle_MeshPart2
+    4300008: Circle_MeshPart3
+    4300010: Circle_001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
