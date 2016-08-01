@@ -22,6 +22,10 @@ GameObject:
   - 33: {fileID: 33000013798746650}
   - 65: {fileID: 65000011785233912}
   - 23: {fileID: 23000010843802950}
+  - 114: {fileID: 114000011469611372}
+  - 114: {fileID: 114000011769831264}
+  - 114: {fileID: 114000011013198354}
+  - 114: {fileID: 114000013739287276}
   m_Layer: 0
   m_Name: GreenStickyNote
   m_TagString: Untagged
@@ -90,3 +94,52 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114000011013198354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012162451406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c992cd57e7eb864f839910eb79bbbbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: 4e9f2dca544dac344b9376572468796e, type: 2}
+  activeObjectMaterial: {fileID: 2100000, guid: 80cac751325fc434d91ecef9a813be41,
+    type: 2}
+--- !u!114 &114000011469611372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012162451406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 706f90c44440ff04493a3fcbf5d6172c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectToTagAlong: {fileID: 1000011995192458, guid: 3c322ea1e1ac803478321e8dbda7068f,
+    type: 2}
+--- !u!114 &114000011769831264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012162451406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c9071dbe3ef31439f12a17960b7c7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000013739287276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012162451406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21dc0304575ec64cb74d8fa4d52fb8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
