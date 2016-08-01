@@ -1,4 +1,5 @@
-﻿using HoloToolkit;
+﻿using Assets.Services;
+using HoloToolkit;
 using UnityEngine;
 
 /// <summary>
@@ -8,6 +9,14 @@ public class InteractibleAction : MonoBehaviour
 {
     [Tooltip("Drag the Tagalong prefab asset you want to display.")]
     public GameObject ObjectToTagAlong;
+
+    private string _text;
+    private BilboardTextParserService _bilboardTextParserService;
+
+    void Start()
+    {
+        _bilboardTextParserService = new BilboardTextParserService();
+    }
 
     public void PerformTagAlong()
     {
@@ -30,5 +39,16 @@ public class InteractibleAction : MonoBehaviour
         instantiatedObjectToTagAlong.AddComponent<Billboard>();
 
         instantiatedObjectToTagAlong.AddComponent<SimpleTagalong>();
-   }
+
+        var textMesh = instantiatedObjectToTagAlong.AddComponent<TextMesh>();
+        textMesh.text = _bilboardTextParserService.Parse(_text);
+        textMesh.offsetZ = -0.05f;
+        textMesh.characterSize = 0.015f;
+        textMesh.anchor = TextAnchor.MiddleCenter;
+        textMesh.color = new Color(0f, 255f, 0f, 255f);
+    }
+    public void SetText(string text)
+    {
+        _text = text;
+    }
 }

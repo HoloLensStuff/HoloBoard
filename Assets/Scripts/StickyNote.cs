@@ -5,6 +5,20 @@
 [RequireComponent(typeof(InteractibleAction))]
 public class StickyNote : MonoBehaviour
 {
+    private string _content;
+    public string Content
+    {
+        get
+        {
+            return _content;
+        }
+        set
+        {
+            _content = value;
+            _interactibleAction.SetText(_content);
+        }
+    }
+
     DuplicateManager _duplicateManager;
     TapToPlaceOnBoard _tapToPlaceOnBoard;
     InteractibleAction _interactibleAction;
@@ -14,6 +28,8 @@ public class StickyNote : MonoBehaviour
         _duplicateManager = GetComponent<DuplicateManager>();
         _tapToPlaceOnBoard = GetComponent<TapToPlaceOnBoard>();
         _interactibleAction = GetComponent<InteractibleAction>();
+
+        Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
     }
 
     public void Duplicate()
