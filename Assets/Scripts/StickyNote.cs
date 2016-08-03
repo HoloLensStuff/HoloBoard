@@ -32,13 +32,6 @@ public class StickyNote : MonoBehaviour
         Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
     }
 
-    public void Duplicate()
-    {
-        if (CanDuplicate())
-        {
-            _duplicatable.Duplicate();
-        }
-    }
     public void PlaceOnBoard()
     {
         _tapToPlaceOnBoard.OnSelect();
@@ -47,16 +40,16 @@ public class StickyNote : MonoBehaviour
     {
         _interactibleAction.PerformTagAlong();
     }
+    public void Duplicate()
+    {
+        if (CanDuplicate())
+            _duplicatable.Duplicate();
+    }
 
     private bool CanDuplicate()
     {
-        if (_tapToPlaceOnBoard.IsPlacingMode()
-            || WasMoved())
-        {
-            return false;
-        }
+        return (_tapToPlaceOnBoard.IsPlacingMode() || WasMoved()) == false;
 
-        return true;
     }
     private bool WasMoved()
     {
