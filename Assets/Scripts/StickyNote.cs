@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(DuplicateManager))]
+[RequireComponent(typeof(Duplicatable))]
 [RequireComponent(typeof(TapToPlaceOnBoard))]
 [RequireComponent(typeof(InteractibleAction))]
 public class StickyNote : MonoBehaviour
@@ -19,13 +19,13 @@ public class StickyNote : MonoBehaviour
         }
     }
 
-    DuplicateManager _duplicateManager;
+    Duplicatable _duplicatable;
     TapToPlaceOnBoard _tapToPlaceOnBoard;
     InteractibleAction _interactibleAction;
 
     void Start()
     {
-        _duplicateManager = GetComponent<DuplicateManager>();
+        _duplicatable = GetComponent<Duplicatable>();
         _tapToPlaceOnBoard = GetComponent<TapToPlaceOnBoard>();
         _interactibleAction = GetComponent<InteractibleAction>();
 
@@ -36,7 +36,7 @@ public class StickyNote : MonoBehaviour
     {
         if (CanDuplicate())
         {
-            _duplicateManager.Duplicate();
+            _duplicatable.Duplicate();
         }
     }
     public void PlaceOnBoard()
