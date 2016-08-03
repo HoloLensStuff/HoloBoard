@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DuplicateManager : MonoBehaviour
+public class Duplicatable : MonoBehaviour
 {
     // Called by GazeGestureManager when the user performs a Select gesture
     public void Duplicate()

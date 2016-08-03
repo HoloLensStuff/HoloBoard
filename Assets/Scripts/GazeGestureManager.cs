@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.VR.WSA.Input;
 
 public class GazeGestureManager : MonoBehaviour
@@ -17,45 +18,52 @@ public class GazeGestureManager : MonoBehaviour
 
         // Set up a GestureRecognizer to detect Select gestures.
         recognizer = new GestureRecognizer();
-        recognizer.TappedEvent += (source, tapCount, ray) =>
-        {
-            StickyNote focusedStickyNote = FocusedObject.GetComponent<StickyNote>();
-            if (focusedStickyNote != null)
-            {
-                focusedStickyNote.PerformTagAlong();
-                focusedStickyNote.Duplicate();
-                focusedStickyNote.PlaceOnBoard();
-            }
+        recognizer.TappedEvent += Recognizer_TappedEvent;
 
-            DismissOnSelect dismissableObject = FocusedObject.GetComponent<DismissOnSelect>();
-            if (dismissableObject != null)
-            {
-                dismissableObject.OnSelect();
-            }
-        };
         recognizer.StartCapturingGestures();
     }
+
+    private void Recognizer_TappedEvent(InteractionSourceKind source, int tapCount, Ray headRay)
+    {
+        HandleStickyNoteTap();
+        HandleDismissOnSelect();
+    }
+    #region Recognizer_TappedEvent private methods
+    private void HandleDismissOnSelect()
+    {
+        DismissOnSelect dismissableObject = FocusedObject.GetComponent<DismissOnSelect>();
+        if (dismissableObject != null)
+        {
+            dismissableObject.OnSelect();
+        }
+    }
+    private void HandleStickyNoteTap()
+    {
+        StickyNote focusedStickyNote = FocusedObject.GetComponent<StickyNote>();
+        if (focusedStickyNote != null)
+        {
+            focusedStickyNote.PerformTagAlong();
+            focusedStickyNote.Duplicate();
+            focusedStickyNote.PlaceOnBoard();
+        }
+    }
+    #endregion
 
     // Update is called once per frame
     void Update()
     {
-        // Figure out which hologram is focused this frame.
         GameObject oldFocusObject = FocusedObject;
-
-        // Do a raycast into the world based on the user's
-        // head position and orientation.
+        
         var headPosition = Camera.main.transform.position;
         var gazeDirection = Camera.main.transform.forward;
 
         RaycastHit hitInfo;
         if (Physics.Raycast(headPosition, gazeDirection, out hitInfo))
         {
-            // If the raycast hit a hologram, use that as the focused object.
             FocusedObject = hitInfo.collider.gameObject;
         }
         else
         {
-            // If the raycast did not hit a hologram, clear the focused object.
             FocusedObject = null;
         }
 
