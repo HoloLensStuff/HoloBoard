@@ -11,11 +11,11 @@ public class InteractibleAction : MonoBehaviour
     public GameObject ObjectToTagAlong;
 
     private string _text;
-    private BilboardTextParserService _bilboardTextParserService;
+    private BilboardTextFormatterService _bilboardTextParserService;
 
     void Start()
     {
-        _bilboardTextParserService = new BilboardTextParserService();
+        _bilboardTextParserService = new BilboardTextFormatterService();
     }
 
     public void PerformTagAlong()
@@ -41,7 +41,7 @@ public class InteractibleAction : MonoBehaviour
         instantiatedObjectToTagAlong.AddComponent<SimpleTagalong>();
 
         var textMesh = instantiatedObjectToTagAlong.AddComponent<TextMesh>();
-        textMesh.text = _bilboardTextParserService.Parse(_text);
+        textMesh.text = _bilboardTextParserService.Format(_text);
         textMesh.offsetZ = -0.05f;
         textMesh.characterSize = 0.015f;
         textMesh.anchor = TextAnchor.MiddleCenter;
