@@ -18,37 +18,41 @@ public class InteractibleAction : MonoBehaviour
         _bilboardTextParserService = new BilboardTextFormatterService();
     }
 
+    public void SetText(string text)
+    {
+        _text = text;
+    }
+
     public void PerformTagAlong()
     {
         if (ObjectToTagAlong == null)
-        {
             return;
-        }
 
-        // Recommend having only one tagalong.
         GameObject existingTagAlong = GameObject.FindGameObjectWithTag("TagAlong");
         if (existingTagAlong != null)
-        {
             return;
-        }
 
-        GameObject instantiatedObjectToTagAlong = GameObject.Instantiate(ObjectToTagAlong);
+        CreateTagAlongObject();
+    }
+    #region PerformTagAlong private functions
+    private void CreateTagAlongObject()
+    {
+        GameObject item = GameObject.Instantiate(ObjectToTagAlong);
 
-        instantiatedObjectToTagAlong.SetActive(true);
+        item.SetActive(true);
+        item.AddComponent<Billboard>();
+        item.AddComponent<SimpleTagalong>();
 
-        instantiatedObjectToTagAlong.AddComponent<Billboard>();
-
-        instantiatedObjectToTagAlong.AddComponent<SimpleTagalong>();
-
-        var textMesh = instantiatedObjectToTagAlong.AddComponent<TextMesh>();
+        var textMesh = item.AddComponent<TextMesh>();
+        ConfigureTextMesh(textMesh);
+    }
+    private void ConfigureTextMesh(TextMesh textMesh)
+    {
         textMesh.text = _bilboardTextParserService.Format(_text);
         textMesh.offsetZ = -0.05f;
         textMesh.characterSize = 0.015f;
         textMesh.anchor = TextAnchor.MiddleCenter;
         textMesh.color = new Color(0f, 255f, 0f, 255f);
     }
-    public void SetText(string text)
-    {
-        _text = text;
-    }
+    #endregion
 }
