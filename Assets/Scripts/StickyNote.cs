@@ -15,7 +15,6 @@ public class StickyNote : MonoBehaviour
         set
         {
             _content = value;
-            _interactibleAction.SetText(_content);
         }
     }
 
@@ -29,7 +28,6 @@ public class StickyNote : MonoBehaviour
         _tapToPlaceOnBoard = GetComponent<TapToPlaceOnBoard>();
         _interactibleAction = GetComponent<InteractibleAction>();
 
-        Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
     }
 
     public void PlaceOnBoard()
@@ -38,7 +36,10 @@ public class StickyNote : MonoBehaviour
     }
     public void PerformTagAlong()
     {
-        _interactibleAction.PerformTagAlong();
+        if (_tapToPlaceOnBoard.IsPlacingMode() == false)
+        {
+            _interactibleAction.PerformTagAlong();
+        }
     }
     public void Duplicate()
     {

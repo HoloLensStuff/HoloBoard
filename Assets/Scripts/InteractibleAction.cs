@@ -1,6 +1,7 @@
 ﻿using Assets.Services;
 using HoloToolkit;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// InteractibleAction performs custom actions when you gaze at the holograms.
@@ -12,15 +13,32 @@ public class InteractibleAction : MonoBehaviour
 
     private string _text;
     private BilboardTextFormatterService _bilboardTextParserService;
+    private StickyNote _stickyNote;
+    private TextMesh _textMesh;
+
+    TouchScreenKeyboard keyboard;
 
     void Start()
     {
         _bilboardTextParserService = new BilboardTextFormatterService();
+        _stickyNote = GetComponent<StickyNote>();
     }
 
-    public void SetText(string text)
+    void Update()
     {
-        _text = text;
+        if (IsKeyboardClosed())
+        {
+            var wasCanceled = keyboard.wasCanceled;
+            var keyboardText = keyboard.text;
+
+            keyboard = null;
+            if (wasCanceled)
+                return;
+
+            SetStickyNoteText(keyboardText);
+
+            UpdateBilboardText();
+        }
     }
 
     public void PerformTagAlong()
@@ -28,31 +46,44 @@ public class InteractibleAction : MonoBehaviour
         if (ObjectToTagAlong == null)
             return;
 
-        GameObject existingTagAlong = GameObject.FindGameObjectWithTag("TagAlong");
-        if (existingTagAlong != null)
-            return;
+        var tagAlong = GameObject.FindGameObjectWithTag("TagAlong") ?? CreateTagAlongObject();
+        _textMesh = tagAlong.GetComponent<TextMesh>();
+        UpdateBilboardText();
 
-        CreateTagAlongObject();
+        OpenKeyboard();
     }
-    #region PerformTagAlong private functions
-    private void CreateTagAlongObject()
+
+    private GameObject CreateTagAlongObject()
     {
-        GameObject item = GameObject.Instantiate(ObjectToTagAlong);
+        GameObject item = Instantiate(ObjectToTagAlong);
 
         item.SetActive(true);
         item.AddComponent<Billboard>();
         item.AddComponent<SimpleTagalong>();
 
-        var textMesh = item.AddComponent<TextMesh>();
-        ConfigureTextMesh(textMesh);
+        return item;
     }
-    private void ConfigureTextMesh(TextMesh textMesh)
+
+    private void SetStickyNoteText(string text)
     {
-        textMesh.text = _bilboardTextParserService.Format(_text);
-        textMesh.offsetZ = -0.05f;
-        textMesh.characterSize = 0.015f;
-        textMesh.anchor = TextAnchor.MiddleCenter;
-        textMesh.color = new Color(0f, 255f, 0f, 255f);
+        _text = text;
+        _stickyNote.Content = text;
     }
-    #endregion
+
+    private void UpdateBilboardText()
+    {
+        if (_textMesh != null && _text != null)
+            _textMesh.text = _bilboardTextParserService.Format(_text);
+    }
+
+    private bool IsKeyboardClosed()
+    {
+        return keyboard != null && keyboard.active == false && keyboard.done == true;
+    }
+
+    private void OpenKeyboard()
+    {
+        keyboard = new TouchScreenKeyboard(_text, TouchScreenKeyboardType.Default, false, false, false, false, "Edit content");
+    }
+
 }

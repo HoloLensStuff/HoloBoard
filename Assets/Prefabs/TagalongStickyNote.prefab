@@ -37,6 +37,7 @@ GameObject:
   - 65: {fileID: 65000013898722348}
   - 114: {fileID: 114000011999827318}
   - 23: {fileID: 23000014103343292}
+  - 102: {fileID: 102000010916482588}
   m_Layer: 0
   m_Name: TagalongStickyNote
   m_TagString: TagAlong
@@ -179,6 +180,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.3, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!102 &102000010916482588
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011995192458}
+  m_Text: 
+  m_OffsetZ: -0.05
+  m_CharacterSize: 0.015
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 0
+  m_TabSize: 4
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190080
 --- !u!114 &114000011999827318
 MonoBehaviour:
   m_ObjectHideFlags: 1
