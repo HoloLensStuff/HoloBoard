@@ -61,6 +61,9 @@ public class InteractibleAction : MonoBehaviour
         item.AddComponent<Billboard>();
         item.AddComponent<SimpleTagalong>();
 
+        var tagAlong = item.GetComponent<TagAlong>();
+        tagAlong.ObjectToDelete = gameObject;
+
         return item;
     }
 

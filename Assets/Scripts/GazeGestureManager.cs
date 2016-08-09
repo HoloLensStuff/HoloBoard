@@ -27,6 +27,8 @@ public class GazeGestureManager : MonoBehaviour
     {
         HandleStickyNoteTap();
         HandleDismissOnSelect();
+        HandleBillboardDelete();
+        HandleBillboardEdit();
     }
     #region Recognizer_TappedEvent private methods
     private void HandleDismissOnSelect()
@@ -45,6 +47,22 @@ public class GazeGestureManager : MonoBehaviour
             focusedStickyNote.PerformTagAlong();
             focusedStickyNote.Duplicate();
             focusedStickyNote.PlaceOnBoard();
+        }
+    }    
+    private void HandleBillboardDelete()
+    {
+        BillboardDelete billboardDelete = FocusedObject.GetComponent<BillboardDelete>();
+        if (billboardDelete != null)
+        {
+            billboardDelete.Delete();
+        }
+    }
+    private void HandleBillboardEdit()
+    {
+        BillboardEdit billboardEdit = FocusedObject.GetComponent<BillboardEdit>();
+        if (billboardEdit != null)
+        {
+            billboardEdit.OnSelect();
         }
     }
     #endregion
