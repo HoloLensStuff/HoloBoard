@@ -7,32 +7,15 @@ public class InteractibleAction : MonoBehaviour
 {
     [Tooltip("Drag the Tagalong prefab asset you want to display.")]
     public GameObject ObjectToTagAlong;
+    public string Text { get { return _text; } }
 
     private string _text;
     private TextMesh _textMesh;
     private BilboardTextFormatterService _bilboardTextParserService;
-    private TouchScreenKeyboard keyboard;
 
     void Start()
     {
         _bilboardTextParserService = new BilboardTextFormatterService();
-    }
-
-    void Update()
-    {
-        if (IsKeyboardClosed())
-        {
-            var wasCanceled = keyboard.wasCanceled;
-            var keyboardText = keyboard.text;
-
-            keyboard = null;
-            if (wasCanceled)
-                return;
-
-            SetStickyNoteText(keyboardText);
-
-            UpdateBilboardText();
-        }
     }
 
     public void PerformTagAlong()
@@ -42,9 +25,29 @@ public class InteractibleAction : MonoBehaviour
 
         var tagAlong = GameObject.FindGameObjectWithTag("TagAlong") ?? CreateTagAlongObject();
         _textMesh = tagAlong.GetComponent<TextMesh>();
-        UpdateBilboardText();
+        UpdateTagAlongComponent(tagAlong);
 
-        OpenKeyboard();
+        UpdateBilboardText();
+    }
+
+    public void SetStickyNoteText(string text)
+    {
+        _text = text;
+
+        var stickyNote = GetComponent<StickyNote>();
+        if (stickyNote != null)
+            stickyNote.Content = text;
+    }
+
+    public void UpdateBilboardText()
+    {
+        _textMesh.text = "";
+
+        if (_textMesh == null
+            || _text == null)
+            return;
+
+        _textMesh.text = _bilboardTextParserService.Format(_text);
     }
 
     private GameObject CreateTagAlongObject()
@@ -55,37 +58,13 @@ public class InteractibleAction : MonoBehaviour
         item.AddComponent<Billboard>();
         item.AddComponent<SimpleTagalong>();
 
-        var tagAlong = item.GetComponent<TagAlong>();
-        tagAlong.ObjectToDelete = gameObject;
-
         return item;
     }
 
-    private void SetStickyNoteText(string text)
+    private void UpdateTagAlongComponent(GameObject tagAlong)
     {
-        _text = text;
-
-        var stickyNote = GetComponent<StickyNote>();
-        if (stickyNote != null)
-            stickyNote.Content = text;
-    }
-
-    private void UpdateBilboardText()
-    {
-        if (_textMesh == null
-            || _text == null)
-            return;
-
-        _textMesh.text = _bilboardTextParserService.Format(_text);
-    }
-
-    private bool IsKeyboardClosed()
-    {
-        return keyboard != null && keyboard.active == false && keyboard.done == true;
-    }
-
-    private void OpenKeyboard()
-    {
-        keyboard = new TouchScreenKeyboard(_text, TouchScreenKeyboardType.Default, false, false, false, false, "Edit content");
+        var tagAlongComponent = tagAlong.GetComponent<TagAlong>();
+        tagAlongComponent.ObjectToDelete = gameObject;
+        tagAlongComponent.Interactable = this;
     }
 }
