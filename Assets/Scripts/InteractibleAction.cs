@@ -3,25 +3,19 @@ using HoloToolkit;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// InteractibleAction performs custom actions when you gaze at the holograms.
-/// </summary>
 public class InteractibleAction : MonoBehaviour
 {
     [Tooltip("Drag the Tagalong prefab asset you want to display.")]
     public GameObject ObjectToTagAlong;
 
     private string _text;
-    private BilboardTextFormatterService _bilboardTextParserService;
-    private StickyNote _stickyNote;
     private TextMesh _textMesh;
-
-    TouchScreenKeyboard keyboard;
+    private BilboardTextFormatterService _bilboardTextParserService;
+    private TouchScreenKeyboard keyboard;
 
     void Start()
     {
         _bilboardTextParserService = new BilboardTextFormatterService();
-        _stickyNote = GetComponent<StickyNote>();
     }
 
     void Update()
@@ -70,13 +64,19 @@ public class InteractibleAction : MonoBehaviour
     private void SetStickyNoteText(string text)
     {
         _text = text;
-        _stickyNote.Content = text;
+
+        var stickyNote = GetComponent<StickyNote>();
+        if (stickyNote != null)
+            stickyNote.Content = text;
     }
 
     private void UpdateBilboardText()
     {
-        if (_textMesh != null && _text != null)
-            _textMesh.text = _bilboardTextParserService.Format(_text);
+        if (_textMesh == null
+            || _text == null)
+            return;
+
+        _textMesh.text = _bilboardTextParserService.Format(_text);
     }
 
     private bool IsKeyboardClosed()
@@ -88,5 +88,4 @@ public class InteractibleAction : MonoBehaviour
     {
         keyboard = new TouchScreenKeyboard(_text, TouchScreenKeyboardType.Default, false, false, false, false, "Edit content");
     }
-
 }
