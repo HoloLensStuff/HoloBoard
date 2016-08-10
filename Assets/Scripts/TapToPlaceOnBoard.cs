@@ -5,8 +5,10 @@ public class TapToPlaceOnBoard : MonoBehaviour
     public Material defaultMaterial;
     public Material activeObjectMaterial;
 
-    Renderer currentRenderer;
-    bool placing = false;
+    private Renderer currentRenderer;
+    private bool placing = false;
+    private const float MAX_DISTANCE = 30.0f;
+    private const int WHITE_BOARD_LAYER = 1 << 8;
 
     void Start()
     {
@@ -15,35 +17,46 @@ public class TapToPlaceOnBoard : MonoBehaviour
 
     public bool IsPlacingMode() { return placing; }
 
-    // Called by GazeGestureManager when the user performs a Select gesture
-    public void OnSelect()
-    {
-        placing = !placing;
-
-        currentRenderer.material = placing ? activeObjectMaterial : defaultMaterial;
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (placing)
         {
-            int whiteBoardLayer = 1 << 8;
-
-            var headPosition = Camera.main.transform.position;
-            var gazeDirection = Camera.main.transform.forward;
-
             RaycastHit hitInfo;
-            if (Physics.Raycast(headPosition, gazeDirection, out hitInfo,
-                30.0f, whiteBoardLayer))
+            if (Physics.Raycast(GetHeadPosition(), GetGazeDirection(),
+                out hitInfo,
+                MAX_DISTANCE, WHITE_BOARD_LAYER))
             {
-                this.transform.position = hitInfo.point;
-
-                Quaternion toQuat = Camera.main.transform.localRotation;
-                toQuat.x = 0;
-                toQuat.z = 0;
-                this.transform.rotation = toQuat;
+                this.transform.position = hitInfo.point;                                
+                this.transform.rotation = GetLocalRotationY();
             }
         }
+    }    
+    private static Vector3 GetHeadPosition()
+    {
+        return Camera.main.transform.position;
+    }
+    private static Vector3 GetGazeDirection()
+    {
+        return Camera.main.transform.forward;
+    }
+    private static Quaternion GetLocalRotationY()
+    {
+        Quaternion result = Camera.main.transform.localRotation;
+
+        result.x = 0;
+        result.z = 0;
+
+        return result;
+    }
+
+    public void OnSelect()
+    {
+        placing = !placing;
+
+        SetRendererMaterial();
+    }
+    private void SetRendererMaterial()
+    {
+        currentRenderer.material = placing ? activeObjectMaterial : defaultMaterial;
     }
 }
