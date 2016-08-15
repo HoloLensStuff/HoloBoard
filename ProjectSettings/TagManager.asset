@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - TagAlong
+  - StickyNoteText
+  - New Tag
   layers:
   - Default
   - TransparentFX
