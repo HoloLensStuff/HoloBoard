@@ -1,21 +1,27 @@
 ﻿using Assets.Services;
 using HoloToolkit;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InteractibleAction : MonoBehaviour
 {
     [Tooltip("Drag the Tagalong prefab asset you want to display.")]
     public GameObject ObjectToTagAlong;
-    public string Text { get { return _text; } }
+    public string Text
+    {
+        get
+        {
+            return _note.Content;
+        }
+    }
 
-    private string _text;
+    private StickyNote _note;
     private TextMesh _textMesh;
     private BilboardTextFormatterService _bilboardTextParserService;
 
     void Start()
     {
         _bilboardTextParserService = new BilboardTextFormatterService();
+        _note = GetComponent<StickyNote>();
     }
 
     public void PerformTagAlong()
@@ -32,22 +38,20 @@ public class InteractibleAction : MonoBehaviour
 
     public void SetStickyNoteText(string text)
     {
-        _text = text;
-
-        var stickyNote = GetComponent<StickyNote>();
-        if (stickyNote != null)
-            stickyNote.Content = text;
+        if (_note != null)
+        {
+            _note.Content = text;
+        }
     }
 
     public void UpdateBilboardText()
     {
         _textMesh.text = "";
 
-        if (_textMesh == null
-            || _text == null)
+        if (_textMesh == null || _note.Content == null)
             return;
 
-        _textMesh.text = _bilboardTextParserService.Format(_text);
+        _textMesh.text = _bilboardTextParserService.Format(input: _note.Content);
     }
 
     private GameObject CreateTagAlongObject()
