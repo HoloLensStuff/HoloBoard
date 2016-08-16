@@ -156,7 +156,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 221562711}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.41, y: 0.34, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 689078817}
@@ -173,7 +173,7 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
-  m_Anchor: 0
+  m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 0
@@ -372,7 +372,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 410149141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.43, y: 0, z: -4.2}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1485002401}
@@ -389,7 +389,7 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
-  m_Anchor: 0
+  m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 0
@@ -570,8 +570,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1228675825}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0.23998901, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 100}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1960788612}
   m_RootOrder: 0
@@ -585,7 +585,7 @@ TextMesh:
   m_GameObject: {fileID: 1228675825}
   m_Text: 
   m_OffsetZ: 0
-  m_CharacterSize: 0.02
+  m_CharacterSize: 0.2
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 0
@@ -842,7 +842,7 @@ Prefab:
     - target: {fileID: 224000012850974142, guid: 8cbe7ce6d3056d64f9429dfaacb96eb4,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -0.002
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000012646605662, guid: 8cbe7ce6d3056d64f9429dfaacb96eb4, type: 2}
@@ -946,7 +946,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1891899022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.4, y: 0.38, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 302195724}
@@ -963,7 +963,7 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: 0.2
   m_LineSpacing: 1
-  m_Anchor: 0
+  m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 0
