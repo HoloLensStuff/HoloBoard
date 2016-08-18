@@ -18,11 +18,13 @@ public class StickyNote : MonoBehaviour
         }
     }
 
+    private bool _isDuplicatable = true;
     private Duplicatable _duplicatable;
     private TapToPlaceOnBoard _tapToPlaceOnBoard;
     private InteractibleAction _interactibleAction;
     private TextMesh _textMesh;
     private string _content;
+    private const int LINE_BUFFER = 5;
 
     void Start()
     {
@@ -47,28 +49,25 @@ public class StickyNote : MonoBehaviour
 
     public void Duplicate()
     {
-        if (CanDuplicate())
+        if (_isDuplicatable)
+        {
+            _isDuplicatable = false;
             _duplicatable.Duplicate();
-    }
-
-    private bool CanDuplicate()
-    {
-        return (_tapToPlaceOnBoard.IsPlacingMode() || WasMoved()) == false;
-
-    }
-
-    private bool WasMoved()
-    {
-        return gameObject.transform.localPosition.Equals(new Vector3(0, 0, 0)) == false;
+        }
     }
 
     private void SetContentPreview()
     {
-        var preview = _content.Split(' ')[0];
-        if (preview.Length > 5)
+        var preview = _content.Trim();
+        if (_content.Length > LINE_BUFFER)
         {
-            preview = preview.Substring(0, 5);
+            preview = preview.Split(' ')[0];
+            if (preview.Length > LINE_BUFFER)
+            {
+                preview = preview.Substring(0, LINE_BUFFER);
+            }
+            preview = preview + "...";
         }
-        _textMesh.text = preview + "...";
+        _textMesh.text = preview;
     }
 }
