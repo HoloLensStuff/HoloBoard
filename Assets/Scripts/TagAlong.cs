@@ -2,6 +2,6 @@
 
 public class TagAlong : MonoBehaviour
 {
-    public GameObject ObjectToDelete { get; set; }
+    public GameObject StickyNote { get; set; }
     public InteractibleAction Interactable { get; set; }
 }

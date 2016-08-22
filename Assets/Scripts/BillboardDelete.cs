@@ -8,7 +8,7 @@ public class BillboardDelete : MonoBehaviour
         if (tagAlong == null)
             return;
 
-        Destroy(tagAlong.ObjectToDelete);
+        Destroy(tagAlong.StickyNote);
         Destroy(tagAlong.gameObject);
     }
 }
