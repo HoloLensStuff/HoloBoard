@@ -18,14 +18,15 @@ public class StickyNote : MonoBehaviour
         }
     }
 
+    private const int LINE_BUFFER = 5;
+
     private bool _isDuplicatable = true;
     private Duplicatable _duplicatable;
     private TapToPlaceOnBoard _tapToPlaceOnBoard;
     private InteractibleAction _interactibleAction;
     private TextMesh _textMesh;
     private string _content;
-    private const int LINE_BUFFER = 5;
-
+    
     void Start()
     {
         _duplicatable = GetComponent<Duplicatable>();
