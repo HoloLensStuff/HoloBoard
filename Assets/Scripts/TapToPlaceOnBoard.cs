@@ -28,19 +28,12 @@ public class TapToPlaceOnBoard : MonoBehaviour
                 MAX_DISTANCE, WHITE_BOARD_LAYER))
             {
                 transform.position = hitInfo.point;
-                //transform.rotation = GetLocalRotationY();
             }
         }
     }
 
     public void OnSelect()
     {
-        // reset the rotation when placing on the board
-        if (_placing)
-        {
-            //ResetRotation();
-        }
-
         _placing = !_placing;
 
         SetRendererMaterial();
@@ -59,22 +52,5 @@ public class TapToPlaceOnBoard : MonoBehaviour
     private static Vector3 GetGazeDirection()
     {
         return Camera.main.transform.forward;
-    }
-
-    private static Quaternion GetLocalRotationY()
-    {
-        Quaternion result = Camera.main.transform.localRotation;
-
-        result.x = 0;
-        result.y = 0;
-        result.z = 0;
-
-        return result;
-    }
-
-    private void ResetRotation()
-    {
-        Quaternion rotation = new Quaternion();
-        transform.rotation = rotation;
     }
 }
