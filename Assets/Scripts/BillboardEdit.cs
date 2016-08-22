@@ -16,8 +16,7 @@ public class BillboardEdit : MonoBehaviour
             if (wasCanceled)
                 return;
 
-
-            _tagAlong.Interactable.SetStickyNoteText(keyboardText);
+            _tagAlong.Interactable.Text = keyboardText;
             _tagAlong.Interactable.UpdateBilboardText();
         }
     }
@@ -30,11 +29,12 @@ public class BillboardEdit : MonoBehaviour
 
         OpenKeyboard();
     }
-    
+
     private bool IsKeyboardClosed()
     {
         return _keyboard != null && _keyboard.active == false && _keyboard.done == true;
     }
+
     private void OpenKeyboard()
     {
         _keyboard = TouchScreenKeyboard.Open(_tagAlong.Interactable.Text ?? "", TouchScreenKeyboardType.Default, false, false, false, false, "Edit content");

@@ -12,6 +12,10 @@ public class InteractibleAction : MonoBehaviour
         {
             return _note.Content;
         }
+        set
+        {
+            _note.Content = value;
+        }
     }
 
     private StickyNote _note;
@@ -36,24 +40,6 @@ public class InteractibleAction : MonoBehaviour
         UpdateBilboardText();
     }
 
-    public void SetStickyNoteText(string text)
-    {
-        if (_note != null)
-        {
-            _note.Content = text;
-        }
-    }
-
-    public void UpdateBilboardText()
-    {
-        _textMesh.text = "";
-
-        if (_textMesh == null || _note.Content == null)
-            return;
-
-        _textMesh.text = _bilboardTextParserService.Format(input: _note.Content);
-    }
-
     private GameObject CreateTagAlongObject()
     {
         GameObject item = Instantiate(ObjectToTagAlong);
@@ -68,7 +54,17 @@ public class InteractibleAction : MonoBehaviour
     private void UpdateTagAlongComponent(GameObject tagAlong)
     {
         var tagAlongComponent = tagAlong.GetComponent<TagAlong>();
-        tagAlongComponent.ObjectToDelete = gameObject;
+        tagAlongComponent.StickyNote = gameObject;
         tagAlongComponent.Interactable = this;
+    }
+
+    public void UpdateBilboardText()
+    {
+        _textMesh.text = "";
+
+        if (_textMesh == null || _note.Content == null)
+            return;
+
+        _textMesh.text = _bilboardTextParserService.Format(input: _note.Content);
     }
 }
