@@ -1,21 +1,31 @@
 ﻿using Assets.Services;
 using HoloToolkit;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class InteractibleAction : MonoBehaviour
 {
     [Tooltip("Drag the Tagalong prefab asset you want to display.")]
     public GameObject ObjectToTagAlong;
-    public string Text { get { return _text; } }
+    public string Text
+    {
+        get
+        {
+            return _note.Content;
+        }
+        set
+        {
+            _note.Content = value;
+        }
+    }
 
-    private string _text;
+    private StickyNote _note;
     private TextMesh _textMesh;
     private BilboardTextFormatterService _bilboardTextParserService;
 
     void Start()
     {
         _bilboardTextParserService = new BilboardTextFormatterService();
+        _note = GetComponent<StickyNote>();
     }
 
     public void PerformTagAlong()
@@ -28,26 +38,6 @@ public class InteractibleAction : MonoBehaviour
         UpdateTagAlongComponent(tagAlong);
 
         UpdateBilboardText();
-    }
-
-    public void SetStickyNoteText(string text)
-    {
-        _text = text;
-
-        var stickyNote = GetComponent<StickyNote>();
-        if (stickyNote != null)
-            stickyNote.Content = text;
-    }
-
-    public void UpdateBilboardText()
-    {
-        _textMesh.text = "";
-
-        if (_textMesh == null
-            || _text == null)
-            return;
-
-        _textMesh.text = _bilboardTextParserService.Format(_text);
     }
 
     private GameObject CreateTagAlongObject()
@@ -64,7 +54,17 @@ public class InteractibleAction : MonoBehaviour
     private void UpdateTagAlongComponent(GameObject tagAlong)
     {
         var tagAlongComponent = tagAlong.GetComponent<TagAlong>();
-        tagAlongComponent.ObjectToDelete = gameObject;
+        tagAlongComponent.StickyNote = gameObject;
         tagAlongComponent.Interactable = this;
+    }
+
+    public void UpdateBilboardText()
+    {
+        _textMesh.text = "";
+
+        if (_textMesh == null || _note.Content == null)
+            return;
+
+        _textMesh.text = _bilboardTextParserService.Format(input: _note.Content);
     }
 }
