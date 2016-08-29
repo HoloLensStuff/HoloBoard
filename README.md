@@ -43,7 +43,7 @@ A Windows 10 PC configured with the correct [tools installed](https://developer.
 ## Export from Unity to Visual Studio
 - In Unity select File > Build Settings.
 - Select Windows Store in the Platform list and click Switch Platform.
-- Set SDK to Universal 10 and Build Type to D3D.
+- Set SDK to Universal 10 and Build Type to XAML.
 - Check Unity C# Projects.
 - Click Add Open Scenes to add the scene.
 - Click Build
