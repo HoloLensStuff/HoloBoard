@@ -14,7 +14,8 @@ The HoloLens emulator is based on Hyper-V and uses RemoteFx for hardware acceler
 - Second Level Address Translation (SLAT)
 - Hardware-based Data Execution Prevention (DEP)
 
-- GPU (The emulator might work with an unsupported GPU, but will be significantly slower)•DirectX 11.0 or later
+- GPU (The emulator might work with an unsupported GPU, but will be significantly slower)
+- DirectX 11.0 or later
 - WDDM 1.2 driver or later
 
 If your system meets the above requirements, please ensure that the "Hyper-V" feature has been enabled on your system through Control Panel -> Programs -> Programs and Features -> Turn Windows Features on or off -> ensure that "Hyper-V" is selected for the Emulator installation to be successful.
