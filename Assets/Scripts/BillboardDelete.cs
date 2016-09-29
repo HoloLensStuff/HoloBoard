@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(SoundEffect))]
 public class BillboardDelete : MonoBehaviour
 {
     public void Delete()
@@ -10,5 +11,11 @@ public class BillboardDelete : MonoBehaviour
 
         Destroy(tagAlong.StickyNote);
         Destroy(tagAlong.gameObject);
+
+        var sound = GetComponent<SoundEffect>();
+        if (sound != null)
+        {
+            sound.PlaySoundEffect();
+        }
     }
 }

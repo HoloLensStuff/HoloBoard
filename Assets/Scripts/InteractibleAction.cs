@@ -2,6 +2,7 @@
 using HoloToolkit;
 using UnityEngine;
 
+[RequireComponent(typeof(SoundEffect))]
 public class InteractibleAction : MonoBehaviour
 {
     [Tooltip("Drag the Tagalong prefab asset you want to display.")]
@@ -38,6 +39,22 @@ public class InteractibleAction : MonoBehaviour
         UpdateTagAlongComponent(tagAlong);
 
         UpdateBilboardText();
+
+        var sound = tagAlong.GetComponent<SoundEffect>();
+        if (sound != null)
+        {
+            sound.PlaySoundEffect();
+        }
+    }
+
+    public void UpdateBilboardText()
+    {
+        _textMesh.text = "";
+
+        if (_textMesh == null || _note.Content == null)
+            return;
+
+        _textMesh.text = _bilboardTextParserService.Format(input: _note.Content);
     }
 
     private GameObject CreateTagAlongObject()
@@ -56,15 +73,5 @@ public class InteractibleAction : MonoBehaviour
         var tagAlongComponent = tagAlong.GetComponent<TagAlong>();
         tagAlongComponent.StickyNote = gameObject;
         tagAlongComponent.Interactable = this;
-    }
-
-    public void UpdateBilboardText()
-    {
-        _textMesh.text = "";
-
-        if (_textMesh == null || _note.Content == null)
-            return;
-
-        _textMesh.text = _bilboardTextParserService.Format(input: _note.Content);
     }
 }
