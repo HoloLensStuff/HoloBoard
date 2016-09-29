@@ -38,6 +38,7 @@ GameObject:
   - 64: {fileID: 64000012655199022}
   - 23: {fileID: 23000010274721514}
   - 114: {fileID: 114000013942024954}
+  - 114: {fileID: 114000010461886704}
   m_Layer: 0
   m_Name: Delete
   m_TagString: Untagged
@@ -77,6 +78,7 @@ GameObject:
   - 23: {fileID: 23000014103343292}
   - 102: {fileID: 102000010916482588}
   - 114: {fileID: 114000010781546710}
+  - 114: {fileID: 114000013319763702}
   m_Layer: 0
   m_Name: TagalongStickyNote
   m_TagString: TagAlong
@@ -364,6 +366,18 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4278190080
+--- !u!114 &114000010461886704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011737294420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc8f643728d30d4d8728dbc57d87322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetFeedbackSound: {fileID: 8300000, guid: e55130c9c84afa04c9801f99dd4a966d, type: 3}
 --- !u!114 &114000010781546710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -386,7 +400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c3ee960602c5545a3aa6745aba2c60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetFeedbackSound: {fileID: 0}
 --- !u!114 &114000012793436136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,6 +411,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db0266561960b8f47bc281e424fa9aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000013319763702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011995192458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc8f643728d30d4d8728dbc57d87322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetFeedbackSound: {fileID: 8300000, guid: 306059691dfb7444dae34e70ff2b467f, type: 3}
 --- !u!114 &114000013942024954
 MonoBehaviour:
   m_ObjectHideFlags: 1
