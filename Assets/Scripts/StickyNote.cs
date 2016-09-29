@@ -46,6 +46,7 @@ public class StickyNote : MonoBehaviour
         if (_tapToPlaceOnBoard.IsPlacingMode() == false && _isDuplicatable == false)
         {
             _interactibleAction.PerformTagAlong();
+            PlaceOnBoard();
         }
     }
 

@@ -9,6 +9,7 @@ public class GazeGestureManager : MonoBehaviour
     public GameObject FocusedObject { get; private set; }
 
     private GestureRecognizer _recognizer;
+    private StickyNote _lastPreviewedStickyNote;
 
     // Use this for initialization
     void Start()
@@ -62,6 +63,7 @@ public class GazeGestureManager : MonoBehaviour
         if (dismissableObject != null)
         {
             dismissableObject.OnSelect();
+            _lastPreviewedStickyNote.PlaceOnBoard();
         }
     }
 
@@ -73,6 +75,7 @@ public class GazeGestureManager : MonoBehaviour
             focusedStickyNote.PerformTagAlong();
             focusedStickyNote.Duplicate();
             focusedStickyNote.PlaceOnBoard();
+            _lastPreviewedStickyNote = focusedStickyNote;
         }
     }
 
