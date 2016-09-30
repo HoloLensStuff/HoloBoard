@@ -26,7 +26,7 @@ public class StickyNote : MonoBehaviour
     private InteractibleAction _interactibleAction;
     private TextMesh _textMesh;
     private string _content;
-    
+
     void Start()
     {
         _duplicatable = GetComponent<Duplicatable>();
@@ -42,9 +42,11 @@ public class StickyNote : MonoBehaviour
 
     public void PerformTagAlong()
     {
-        if (_tapToPlaceOnBoard.IsPlacingMode() == false)
+
+        if (_tapToPlaceOnBoard.IsPlacingMode() == false && _isDuplicatable == false)
         {
             _interactibleAction.PerformTagAlong();
+            PlaceOnBoard();
         }
     }
 
